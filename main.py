@@ -3,6 +3,7 @@ import random
 import time
 
 user_name = "iamlearningpython"
+cond = ""
 
 Alphabet = ['a' ,'b' ,'c','d' ,'e' ,'f' ,'g' ,'h' ,'i' ,'j' ,'k','l' ,'m' ,'n' ,'o' ,'p' ,'q' ,'r' ,'s' ,'t' ,'u' ,'w' ,'v' ,'x' ,'y' ,'z']
 
@@ -19,7 +20,10 @@ driver = webdriver.Chrome(my_path)
 driver.get("http://www.instagram.com/")
 
 time.sleep(0.5)
-driver.find_element_by_link_text("Zaloguj się").click()
+try: 
+    driver.find_element_by_link_text("Zaloguj się").click()
+except:
+      driver.find_element_by_link_text("Log in").click()  
 time.sleep(0.5)
 driver.find_element_by_name("username").send_keys(user_name)
 time.sleep(0.25)
