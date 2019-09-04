@@ -20,15 +20,7 @@ def generator():
 with open("path", "r") as f:
     my_path = f.readline()
 driver = webdriver.Chrome(my_path)
-driver.get("https://www.instagram.com/")
-
-try:
-    WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.LINK_TEXT, "Zaloguj się"))) 
-    driver.find_element_by_link_text("Zaloguj się").click()
-
-except:
-      WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.LINK_TEXT, "Log in")))
-      driver.find_element_by_link_text("Log in").click()
+driver.get("https://www.instagram.com/accounts/login")
 
 WebDriverWait(driver, 3).until(EC.title_contains("Login")) #Wait for login page to load
 
