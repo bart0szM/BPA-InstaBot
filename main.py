@@ -1,6 +1,8 @@
 from selenium import webdriver
 import random
 
+user_name = "iamlearningpython"
+
 Alphabet = ['a' ,'b' ,'c','d' ,'e' ,'f' ,'g' ,'h' ,'i' ,'j' ,'k','l' ,'m' ,'n' ,'o' ,'p' ,'q' ,'r' ,'s' ,'t' ,'u' ,'w' ,'v' ,'x' ,'y' ,'z']
 
 def generator():
@@ -22,7 +24,7 @@ import time
 time.sleep(0.5)
 driver.find_element_by_link_text("Zaloguj się").click()
 time.sleep(0.5)
-driver.find_element_by_name("username").send_keys("iamlearningpython")
+driver.find_element_by_name("username").send_keys(user_name)
 time.sleep(0.25)
 with open("pass", "r") as f:
     my_password = f.readline()
