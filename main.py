@@ -7,6 +7,8 @@ from selenium.webdriver.common.by import By
 
 user_name = "iamlearningpython"
 cond = "false"
+login_page_url = "https://www.instagram.com/accounts/login"
+base_url = "https://www.instagram.com/"
 
 Alphabet = ['a' ,'b' ,'c','d' ,'e' ,'f' ,'g' ,'h' ,'i' ,'j' ,'k','l' ,'m' ,'n' ,'o' ,'p' ,'q' ,'r' ,'s' ,'t' ,'u' ,'w' ,'v' ,'x' ,'y' ,'z']
 
@@ -20,7 +22,7 @@ def generator():
 with open("path", "r") as f:
     my_path = f.readline()
 driver = webdriver.Chrome(my_path)
-driver.get("https://www.instagram.com/accounts/login")
+driver.get(login_page_url)
 
 WebDriverWait(driver, 3).until(EC.title_contains("Login")) #Wait for login page to load
 
@@ -44,7 +46,7 @@ for x in range (0,10): #generate 10 random instagram profiles (from 0 to 9)
             if line.strip() == user:
                 cond = "true"
     if cond != "true":  #if user is not in the file then it goes to it's profile
-        driver.get("http://www.instagram.com/" + user)
+        driver.get(base_url + user)
         try:
             WebDriverWait(driver, 3).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".\_6VtSN")))
             driver.find_element_by_css_selector(".\_6VtSN").click() #Click FOLLOW button
@@ -59,7 +61,7 @@ for x in range (0,10): #generate 10 random instagram profiles (from 0 to 9)
             except:
                 time.sleep(0.25) #Do nothing if there is no valid account
 
-driver.get("http://www.instagram.com/" + user_name)
+driver.get(base_url + user_name)
 
 WebDriverWait(driver, 3).until(EC.title_contains(user_name))
 
